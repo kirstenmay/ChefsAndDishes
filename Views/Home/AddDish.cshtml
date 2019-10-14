@@ -1,0 +1,69 @@
+@model ChefsAndDishes.Models.NewDishViewModel;
+<div class="text-center">
+    <h1 class="display-4">Add a new dish!</h1>
+</div>
+<div class="row">
+    <div class="col-8 offset-2">
+        <form asp-action="CreateDish" method="post">
+            <div class="form-group row">
+                <label asp-for="New_Dish.Name" class="col-sm-2 col-form-label">Dish Name</label>
+                <div class="col-10">
+                    <input type="text" asp-for="New_Dish.Name" placeholder="Dish Name" class="form-control">
+                    <span asp-validation-for="New_Dish.Name"></span>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group row">
+                        <label asp-for="New_Dish.Calories" class="col-sm-3 col-form-label">Calories</label>
+                        <div class="col-9">
+                            <input type="number" asp-for="New_Dish.Calories" placeholder="Total Calories" class="form-control">
+                            <span asp-validation-for="New_Dish.Calories"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group row">
+                        <label asp-for="New_Dish.Tastiness" class="col-sm-5 col-form-label">Tastiness</label>
+                        <div class="col-7">
+                            <select asp-for="New_Dish.Tastiness" class ="form-control">
+                                <option selected disabled>Select...</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <span asp-validation-for="New_Dish.Tastiness"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="New_Dish.ChefId" class="col-sm-2 col-form-label">Chef</label>
+                <div class="col-10">
+                    <select asp-for="New_Dish.ChefId" class="form-control">
+                        @{
+                            foreach(Chef chef in Model.AllChefs)
+                            {
+                                <option value="@chef.ChefId">@chef.FirstName @chef.LastName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="New_Dish.Description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-10">
+                    <textarea asp-for="New_Dish.Description" rows="4" class="form-control" placeholder="Add a description..."></textarea>
+                    <span asp-validation-for="New_Dish.Description"></span>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <input type="submit" class ="btn btn-outline-success" value ="+Dish">
+            </div>
+        </form>
+    </div>
+</div>

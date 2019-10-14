@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Dishes Page";
+}
+
+<div class="row">
+    <div class="col-10 offset-1">
+        <h1 class = "display-4">Tasty Dishes <a href="/AddDish" class = "btn btn-outline-primary">+Dish</a></h1>
+        <ul class="list-group list-group-flush">
+            @{
+                foreach(Dish dish in Model)
+                {  
+                    <li class="list-group-item" style="font-size: 28px;">@dish.Name by @dish.Creator.FirstName @dish.Creator.LastName | Stars: @dish.Tastiness | Calories: @dish.Calories</li>
+                }
+            }
+        </ul>
+    </div>
+</div>
